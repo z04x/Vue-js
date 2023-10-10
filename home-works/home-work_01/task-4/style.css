@@ -1,42 +1,4 @@
-/* .bank {
-    font-family: 'Roboto', sans-serif;
-}
 
-.bank__container {
-    }
-
-    .bank__content {
-    }
-
-    .bank__convert {
-    }
-
-.content-bank {
-
-}
-
-    .content-bank__form {
-    }
-
-    .content-bank__input {
-    }
-
-    .content-bank__btn {
-    }
-
-    .content-bank__percent {
-    }
-
-.convert-bank {}
-
-    .convert-bank__euro {
-    }
-
-    .convert-bank__dollar {
-    }
-
-.massege {
-} */
 /* Основной стиль для контейнера банка */
 .bank {
     font-family: 'Roboto', sans-serif;
