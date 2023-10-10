@@ -1,0 +1,45 @@
+/* Общие свойства для контейнера .weather__container */
+.weather__container {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+}
+
+/* Свойства для фонового изображения .weather__bg-image */
+.weather__bg-image {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: .8;
+    background: #000000;
+}
+
+/* Свойства для меток (label) */
+.weather__container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #5c5c5c;
+    background: #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: #5c5c5c;
+    
+  }
+
+/* Общие свойства для всего документа (body) */
+body {
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #5c5c5c;
+}

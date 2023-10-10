@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #1 Task-3</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Контейнер -->
+        <div class="random__container">
+            <!-- Форма для генерации случайных чисел -->
+            <div class="random__labels">
+                <!-- Минимальное число -->
+                <label>
+                    <span class="random__text">Мінімальне число : </span>
+                    <input type="number" v-model.lazy="numMin" min="0">
+                </label>
+                <!-- Максимальное число -->
+                <label>
+                    <span class="random__text">Максимальне число : </span>
+                    <input type="number" v-model.lazy="numMax">
+                </label>
+            </div>
+            <!-- Кнопка для генерации случайного числа -->
+            <button type="submit" class="button" @click="random">Random</button>
+            <!-- Отображение случайного числа -->
+            <p>{{randomValue}}</p>
+        </div>
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+                return {
+                    randomValue: null,
+                }
+            },
+            // Определяем функции приложения
+            methods: {
+                // Функция - расчета случайного числа в заданном диапазоне
+                randomNum(min, max) {
+                    return Math.floor(Math.random() * (this.numMax - this.numMin + 1)) + this.numMin;
+                },
+                // Функция - генерации случайного числа
+                random() {
+                    this.randomValue = this.randomNum(this.numMin, this.numMax);
+                },
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

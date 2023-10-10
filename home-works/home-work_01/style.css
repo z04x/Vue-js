@@ -1,0 +1,64 @@
+/* Общие стили для карточек заданий */
+.page{
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+}
+.task-page {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+/* Стили для текста задания */
+.task-page__text {
+    font-size: 18px;
+}
+
+/* Стили для ссылок на решение заданий */
+.task-page__link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Стили для ссылок на решение заданий при наведении */
+.task-page__link:hover {
+    background-color: #45a049;
+}
+
+/* Стили для кнопок */
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Стили для кнопок при наведении */
+.button:hover {
+    background-color: #45a049;
+}

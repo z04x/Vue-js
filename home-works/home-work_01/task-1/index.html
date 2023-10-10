@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #1 Task-1</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="calc__container">
+            <!-- Пассажиры -->
+            <label class="calc__label">
+                <span class="calc__label-text">Кількість пасажирів :</span>
+                <input class="calc__input" type="number" v-model="passenger" min="1">
+            </label>
+            <br>
+            <!-- Автобусы -->
+            <label class="calc__label">
+                <span class="calc__label-text">Кількість автобусів : {{ buses }}</span>
+            </label>
+            <br>
+            <!-- Вода -->
+            <label class="calc__label">
+                <span class="calc__label-text">Кількість води : {{ water }}</span>
+            </label>
+            <br>
+            <!-- Еда -->
+            <label class="calc__label">
+                <span class="calc__label-text">Кількість їжі : {{ sandwich }}</span>
+            </label>
+        </div>
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+                return {
+                    passenger: null,
+                }
+            },
+            // Определяем вычисляемые функции
+            computed: {
+                water() {
+                    return (this.passenger * 2)
+                },
+                sandwich() {
+                    return (this.passenger * 3)
+                },
+                buses() {
+                    return (Math.ceil(this.passenger / 20))
+                },
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+/* .bank {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bank__container {
+    }
+
+    .bank__content {
+    }
+
+    .bank__convert {
+    }
+
+.content-bank {
+
+}
+
+    .content-bank__form {
+    }
+
+    .content-bank__input {
+    }
+
+    .content-bank__btn {
+    }
+
+    .content-bank__percent {
+    }
+
+.convert-bank {}
+
+    .convert-bank__euro {
+    }
+
+    .convert-bank__dollar {
+    }
+
+.massege {
+} */
+/* Основной стиль для контейнера банка */
+.bank {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+  
+  /* Стиль для отображения баланса */
+  .bank__balance {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #8d8d8d;
+    transition: color 0.3s ease;
+  }
+  
+  /* Красный при снятии */
+  .red {
+    color: #e74c3c;
+  }
+  
+  /* Зеленый при пополнении */
+  .green {
+    color: #27ae60;
+  }
+  
+  /* Стиль для контейнера с контентом банка */
+  .content-bank {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  /* Стиль для формы внутри контейнера */
+  .content-bank__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Стиль для ввода и кнопок в форме */
+  .content-bank__input,
+  .content-bank__btn {
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .content-bank__input {
+    width: 110px;
+  }
+  
+  /* Стиль для кнопки Пополнить*/
+  .content-bank__btn {
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .btn-deposit{
+    background-color: #27ae60;
+  }
+  .btn-deposit:hover{
+    background-color: #219653;
+    transform: scale(1.02);
+  }
+  .btn-deduct{
+    background-color: #ff5722;
+  }
+  .btn-deduct:hover{
+    background-color: #e74c3c;
+    transform: scale(1.02);
+  }
+    
+  /* Стиль для процента за операцию */
+  .content-bank__percent {
+    margin-top: 10px;
+    color: #ff5722;
+    font-size: 14px;
+  }
+  
+  /* Стиль для конвертера валют */
+  .convert-bank {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  /* Анимация появления ошибки */
+  .error-message {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Стиль для сообщений об ошибках */
+  .message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #e74c3c; /* Красный цвет для сообщений об ошибке */
+  }

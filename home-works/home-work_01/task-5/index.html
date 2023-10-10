@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #1 Task-1</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="authorization__container">
+            <h1>Sign In Form</h1>
+            <div class="authorization__content" method="post">
+                <form class="authorization__form" method="" action="" autocomplete="off">
+                    <!-- Поле логина -->
+                    <input type="text" class="authorization__user" name="user" v-model="usernameInput"
+                        placeholder="username" />
+                    <!-- Поле пароля -->
+                    <input type="password" class="authorization__pass" name="pass" v-model="passwordInput"
+                        placeholder="password" />
+                    <!-- Кнопка для отправки -->
+                    <button type="submit" @click="logIn">GO</button>
+                </form>
+                <!-- сообщения об ошибке -->
+                <div class="authorization__error">{{authorizationError}}</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Массив зарегистрированных пользователей
+        const RegisteredUsers = [
+            {
+                username: "sordo123",
+                password: "01102004"
+            },
+            {
+                username: "andrewMon",
+                password: "1231230",
+            },
+            {
+                username: "123123",
+                password: "111111",
+            },
+            {
+                username: "1111",
+                password: "1111"
+            },
+            {
+                username: "12",
+                password: "12",
+            },
+            {
+                username: "123",
+                password: "111",
+            },
+            {
+                username: "Salamon",
+                password: "12Qq12Ww22"
+            },
+            {
+                username: "qwerty",
+                password: "qwerty1",
+            },
+        ]
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+
+                return {
+                    usernameInput: undefined,
+                    passwordInput: undefined,
+                    authorizationError: null,
+                }
+            },
+
+            // Определение методов
+            methods: {
+                logIn() {
+                    // Проверка, существует ли пользователь
+                    const userExists = RegisteredUsers.some(user => {
+                        return user.username === this.usernameInput && user.password === this.passwordInput;
+                    });
+                    if (!userExists) {
+                        // Если пользователя нет в массиве, вывести ошибку
+                        event.preventDefault();
+                        return this.authorizationError = 'Авторизація не вдалася. Неправильний логін або пароль.'
+                    } else {
+                        // Очистка сообщения об ошибке
+                        this.authorizationError = null;
+                    }
+                },
+
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

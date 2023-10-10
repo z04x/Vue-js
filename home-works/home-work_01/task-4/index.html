@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #1 Task-4</title>
+</head>
+
+<body>
+    <div class="bank" id="app">
+        <div class="bank__container">
+            <!-- Отображение баланса -->
+            <span class="bank__balance" :class="{'red': sumUp, 'green': sumDown}">
+                Сума на рахунку: {{ formattedBalance() }} ₴
+            </span>
+            <div class="bank__content content-bank">
+                <form action="" class="content-bank__form">
+                    <label>
+                        <span>Покласти на рахунок : </span>
+                        <!-- input для пополнения счета -->
+                        <input ref="input1" class="content-bank__input" type="number" v-model="balancePlus" min="1">
+                        <button class="content-bank__btn btn-deposit" type="button"
+                            @click="transactionHandling('deposit')">Зарахувати</button>
+                        <!-- Отображение процента для пополнения -->
+                        <span class="content-bank__percent">Відсоток за операцію: {{ formattedPercent('deposit') }}
+                            ₴</span>
+                    </label>
+
+                    <label>
+                        <span>Зняти з рахунку : </span>
+                        <!-- input для снятия сл счета -->
+                        <input ref="input2" class="content-bank__input" type="number" v-model="balanceMinus" min="1">
+                        <button class="content-bank__btn btn-deduct" type="button"
+                            @click="transactionHandling('deduct')">Зняти</button>
+                        <!-- Отображение процента для снятия -->
+                        <span class="content-bank__percent">Відсоток за операцію: {{ formattedPercent('deduct') }}
+                            ₴</span>
+                    </label>
+
+                </form>
+            </div>
+            <div class="bank__convert convert-bank">
+                <!-- Отображение баланса в евро и долларах -->
+                <div class="convert-bank__euro">{{ formattedCurrency(balance, 38.61, '€') }}</div>
+                <div class="convert-bank__dollar">{{ formattedCurrency(balance, 36.53, '$') }}</div>
+            </div>
+            <!-- Отображение ошибки -->
+            <div class="message" :class="{ 'error-message': errors }">{{ errors }}</div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            // Определение данных приложения
+            data() {
+                return {
+                    balance: 0,
+                    balanceMinus: null,
+                    balancePlus: null,
+                    errors: '',
+                };
+            },
+
+            // Определение методов
+            methods: {
+                // Форматирование баланса до двух знаков после запятой
+                formatNumber(value) {
+                    return value.toFixed(2);
+                },
+                formattedBalance() {
+                    const formatted = this.formatNumber(this.balance);
+                    return formatted;
+                },
+                // Метод для обработки пополнение и снятие
+                transactionHandling(type) {
+                    const amount = type === 'deposit' ? this.balancePlus : this.balanceMinus;
+                    const percent = (amount * 3) / 100;
+
+                    if (type === 'deduct' && this.balance < amount + percent) {
+                        this.errors = "Операция недоступна. Недостаточно средств на счету";
+                    } else {
+                        this.balance += type === 'deposit' ? (amount - percent) : (-amount - percent);
+                        this.balancePlus = '';
+                        this.balanceMinus = '';
+                        this.errors = '';
+                        this.sumDown = type === 'deposit';
+                        this.sumUp = type === 'deduct';
+                    }
+                },
+                // Форматирования процента
+                formattedPercent(type) {
+                    const amount = type === 'deposit' ? this.balancePlus : this.balanceMinus;
+                    const percent = (amount * 3) / 100;
+                    return this.formatNumber(percent);
+                },
+                // Форматирования баланса в валюту
+                formattedCurrency(value, rate, symbol) {
+                    const converted = value / rate;
+                    return `${this.formatNumber(converted)} ${symbol}`;
+                },
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

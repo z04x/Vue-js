@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #1 Task-2</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="weather__container">
+            <form>
+                <!-- Выпадающий список с выбором месяца -->
+                <label for="months">Оберіть місяць:</label>
+                <select v-model="months" name="months">
+                    <option value="01"> Січень </option>
+                    <option value="02"> Лютий </option>
+                    <option value="03"> Березень </option>
+                    <option value="04"> Березень </option>
+                    <option value="05"> Травень </option>
+                    <option value="06"> Червень </option>
+                    <option value="07"> Липень </option>
+                    <option value="08"> Серпень </option>
+                    <option value="09"> Вересень </option>
+                    <option value="10"> Жовтень </option>
+                    <option value="11"> Листопад </option>
+                    <option value="12"> Грудень </option>
+                </select>
+            </form>
+            <div class="weather__massege">
+                <!-- Текстовое сообщение о погоде -->
+                <p class="weather__text">{{massege}}</p>
+            </div>
+        </div>
+        <!-- Изображение фона -->
+        <img class="weather__bg-image" :src="weather" :style="{ display: shouldDisplayImage ? 'block' : 'none'}" alt="">
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные
+            data(app) {
+                return {
+                    months: undefined,
+                    weather: undefined,
+                    colthes: undefined,
+                    shouldDisplayImage: false,
+                    massege: undefined,
+                }
+            },
+            // Наблюдатель
+            watch: {
+                months(newValue) {
+                    // Обновляем данные в зависимости от выбранного месяца
+                    if (newValue >= 12 || newValue <= 2) {
+                        // Зима
+                        this.shouldDisplayImage = true
+                        this.weather = 'https://www.fonstola.ru/images/201706/fonstola.ru_263502.jpg';
+                        this.massege = 'Пуховик та чоботи'
+                    } else if (newValue >= 9) {
+                        // Осень
+                        this.shouldDisplayImage = true
+                        this.weather = 'https://funart.top/uploads/posts/2022-08/1659727358_5-funart-pro-p-fon-dlya-rabochego-stola-osen-krasivo-6.jpg';
+                        this.massege = 'Пальто та парасолька'
+                    } else if (newValue >= 6) {
+                        // Лето
+                        this.shouldDisplayImage = true
+                        this.weather = 'https://celes.club/uploads/posts/2022-11/1667360901_2-celes-club-p-oboi-dlya-rabochego-stola-priroda-leto-ins-3.jpg';
+                        this.massege = 'Сонцезахисний крем та шорти';
+                    } else if (newValue >= 3) {
+                        // Весна
+                        this.shouldDisplayImage = true
+                        this.weather = 'https://s1.1zoom.ru/big0/124/Netherlands_Parks_Spring_Tulips_Pond_Keukenhof_522003_1280x850.jpg';
+                        this.massege = 'худі та пігулки від алергії'
+                    } else {
+                        this.shouldDisplayImage = false
+                    }
+                },
+            }
+
+        }).mount('#app')
+
+    </script>
+</body>
+
+</html>
