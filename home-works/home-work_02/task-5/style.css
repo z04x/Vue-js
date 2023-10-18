@@ -1,0 +1,78 @@
+
+*{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
+
+.caption-description {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+/* Общие стили для контейнера результатов */
+.search-result__container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Стили для каждого элемента результатов */
+.content-search-result {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
+  text-align: left;
+  max-width: 650px;
+}
+.content-search-result__caption{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+/* Стили для логотипа */
+.content-search-result__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px gray solid;
+  overflow: hidden;
+  
+}
+
+/* Стили для заголовка и ссылки */
+.caption-description__title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.caption-description__link {
+  color: #00000098;
+  margin-top: 5px;
+}
+
+/* Стили для описания */
+.content-search-result__description-title {
+  margin-top: 10px;
+}
+
+.content-search-result__title {
+  font-size: 1.1rem;
+  color: #007bff;
+  font-weight: 600;
+}
+
+.content-search-result__description {
+  font-size: 0.9rem;
+  color: #666;
+}
+

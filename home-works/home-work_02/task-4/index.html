@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #2 Task-4</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 4. Вивести список як маркований список з елементами у форматі (name: salary) -->
+        <div class="salary__container">
+            <div class="salary__for-employee">
+                <h2>Зарплата за <strong>{{ currentMonth }}</strong></h2>
+                <ul class="salary__empolyee-list">
+                    <li v-for="empolyeSalary in salaryArr" class="salary__empolyee" :key="empolyeSalary.id">
+                        <span>{{empolyeSalary.name}}:</span><span>{{empolyeSalary.salary}}$</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+                return {
+                    salaryArr: [
+                        {
+                            id: 1,
+                            name: 'Andrey',
+                            salary: 2350
+                        },
+                        {
+                            id: 2,
+                            name: 'Ihor',
+                            salary: 5350
+                        },
+                        {
+                            id: 3,
+                            name: 'Stas',
+                            salary: 3000
+                        },
+                        {
+                            id: 4,
+                            name: 'Nikita',
+                            salary: 3100
+                        },
+                        {
+                            id: 5,
+                            name: 'Sonya',
+                            salary: 1100
+                        },
+                        {
+                            id: 6,
+                            name: 'Diana',
+                            salary: 6120
+                        },
+                        {
+                            id: 7,
+                            name: 'Alex',
+                            salary: 1120
+                        },
+                    ],
+                }
+            },
+            // Определяем вычисляемые функции
+            computed: {
+                currentMonth() {
+                    const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+                    const currentDate = new Date();
+                    return months[currentDate.getMonth()];
+                }
+            },
+            methods: {
+
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

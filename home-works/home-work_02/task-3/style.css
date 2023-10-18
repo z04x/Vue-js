@@ -1,0 +1,121 @@
+
+/* ======================================================================================================================================================== */
+body{
+    background: url('https://fon.litrelax.ru/uploads/posts/2023-02/1675347856_foni-club-p-fon-zadnii-na-angliiskom-yazike-1.jpg')0 0/ cover no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.english-simulator__container {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.english-simulator__message{
+    display: flex;
+    justify-content: center;
+    color: #000b18;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease 0s;
+    
+    
+    border-radius: 5px;
+    background: #ffffff34;
+    text-decoration: underline;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.473);
+}
+
+.english-simulator__card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius:10px;
+    text-align: center;
+    max-width: 250px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.473);
+}
+
+.english-simulator__card-image {
+    box-shadow: 0px 0px 20px 1px rgb(212, 211, 211);
+    border-radius: 10px;
+    padding: 15px;
+
+}
+
+.english-simulator__card-word {
+    font-size: 24px;
+    text-decoration: underline #007bff;
+    padding-top: 10px;
+    color: #333;
+
+}
+
+.english-simulator__card-translation {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+
+}
+
+.english-simulator__card-button {
+    background:  #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.english-simulator__card-button:hover {
+    background: #0011ff;
+    
+}
+.english-simulator__next-button{
+    background:  #ff7417;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+}
+.english-simulator__next-button:hover{
+    background:  #ff5e00;
+
+}
+.mistranslation{
+    border: 5px #ff0000 solid;
+}
+.correct-translation{
+    border: 5px #2da116 solid;
+    
+}
+
+ol{
+    background: #eeeeee;
+    border-radius: 5px;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.473);
+}
+
+li{
+    font-weight: 600;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #2 Task-5</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="search-result__container">
+            <div v-for="searchList in searchResultArr" :key="searchList.id"
+                class="search-result__content content-search-result">
+
+                <div style="display: flex;" class="content-search-result__caption">
+                    <a href="{{searchList.link}}" class="content-search-result__logo"><img :src="searchList.logo"
+                            alt=""></a>
+                    <div class="content-search-result__caption-description caption-description">
+                        <a href="{{searchList.link}}" class="caption-description__title">
+                            {{searchList.title}}
+                        </a>
+                        <a href="{{searchList.link}}" class="caption-description__link">
+                            {{searchList.link}}
+                        </a>
+                    </div>
+                </div>
+                <div class="content-search-result__description-title">
+                    <div class="content-search-result__title">
+                        <a href="{{searchList.link}}">{{searchList.title}}</a>
+                    </div>
+                    <div class="content-search-result__description">
+                        {{searchList.description}}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+                return {
+                    searchResultArr: [
+                        {
+                            id: 1,
+                            title: 'Vue.js',
+                            link: 'https://ua.vuejs.org',
+                            logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAhFBMVEX///+44Myw3cetyL+rsbjh4+XB5NIlsnY1tX0lOVQmPlUhOlNFV2lewJI+t4FCuINCu4Q9kHQ0P1s1SV6zub/f8edDvoU2VWGDzKg/pHs0PFuLlJ4rs3k5bGg1RV0ML0rp6+0vRFpteYY7hHDT699wxZ0+mXfr9vA3X2SZ1LdAq346d2zD7XyeAAABIklEQVR4Aa3RBbaDUAxF0Vt/aCh1N+rzn99Pgua77XqBLLIO/q7VFp2u6EH19EenLVroD5zwfN8PQqgw4B+eE4M+EMVElAzT0WgUjMHGAX9Nhwn/HUcAJgNi09mIBWDBiM2mxAYTsLmTEYsl/+2vgJXPX5YLGeDmUGsdsdnygd1+v+OP7UYHrJFrOxJyF4fj8SB3QMK1USCRnLZyhhzfnhISKGVrPWNU0ePrDJWzrnpJRyq96Ipn1K75qrftiG1v+YpXNNwdscdyxJYPYu4Ow8Uy4skjtk8ZEDtY/TUJOYHEug+rSlJHsKokzQjWPF81X3EOq06SJHkEyyQxESyqwLJJbARLkmgEyybRCJZNohEsm0QifKK1XrfwqSjC57IM/+0FV60eh/8r7TcAAAAASUVORK5CYII=',
+                            description: 'Прогресивний JavaScript фреймворк. Доступний, продуктивний і універсальний фреймворк для створення користувацьких веб інтерфейсів. Чому Vue Розпочати ...',
+                        },
+                        {
+                            id: 2,
+                            title: 'CSS.in.ua',
+                            link: 'https://css.in.ua',
+                            logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAAAIklEQVR4AWMgB/zvQUcQUHySCQ2NVA30B85TPqChUQ1kAAD55aRBCKjb7QAAAABJRU5ErkJggg==',
+                            description: 'Каскадні таблиці стилів (англ. Cascading Style Sheets - CSS). Мова для запису стильового оформлення веб-сторінок. Колір тла, розмір літер та найрізноманітніші ...',
+                        },
+                        {
+                            id: 3,
+                            title: 'CSS.in.ua',
+                            link: 'https://css.in.ua/html/global/attributes',
+                            logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAANlBMVEVHcEwfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8LBA9mAAAAEnRSTlMAG1gvaPWLI7P/eesORjrdoMck/p41AAAAxElEQVR4Ab1SBRIEIQzDWgi6/f9jT5BzbnwzUm+TAXUWtLH7oiPe1nxA3BYN0nZtDuD8mSw8+itRKezf+h3mJUbIAc28sD+AYLuXyKkiSHHtrgFg3d0I8Z0xHWO1aSA3+wjcFzAgtTej1UULabouIWWVE1JRE4JjuRHIfWtyeQ7S7PMMSJ58xvkAmeufjDQTpNy6GsagSWgPLdm0u25G6uHofcILWAvipDVVL+SaHdHI6fr9A/4+JJHdFiOOvC3aaNU5uAJakwdiAv2bggAAAABJRU5ErkJggg==',
+                            description: 'HTML. Мова розмітки гіпертексту (англ. HyperText Markup Language - HTML). Основна мова для опису змісту веб-сторінок. Посилання, параграфи, ...',
+                        },
+                        {
+                            id: 4,
+                            title: 'Сучасний підручник з JavaScript',
+                            link: 'https://uk.javascript.info',
+                            logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAdVBMVEXBMzXBMjTAKy3COTvXiou9FxrUgIHv0dG9Gh3ALjDsycm+HyL89vb68PDHTU/EQkT////eoKG+ISS+Iybir6+/KCrPb3Dbl5jcmZrSe3zKWVvZkJD++/v36eq8AAnnvb3hqqrz3t/ktLW9Exfz39/NZWa7BQy0mgKcAAABCklEQVR4AY2QBZaEMBAF08HS6CfBXff+N1w3hrFCIvVem3gCkv9Pkg7Osh36PTi2dbDS9RR/bVn5rjyGDcIo5k8XR2FA4gAnSLV4R6dIWFxgMlj0kR2ZOcTMc8lCFWX+TlkowTLP6dslVVk3hqTI21YLSaapyyr5sYGPzpZkIqBXJN0O/r+agmHsptxGOqGWUzcOh3pJO4JtTBlqFo6m0wQp6IFZEYlrBAuwBOI6a7f13Xrd8Y50wc5XpV6QFlj09agRECK6Gpcb+IMHNNfimgnLjA2TuRa1B3yy0F+JywnCDlsZIuZz1BTTUIwhkJ7jqg27lPqlxuacJaBICNJAcJLETL/r2dLv+hRvv5oREgsgYMsAAAAASUVORK5CYII=',
+                            description: 'Підручник із сучасного JavaScript: прості, але докладні пояснення з прикладами та завданнями, включаючи: замикання, DOM та події, обєктно- орієнтоване ...',
+                        },
+                    ],
+                }
+            },
+            // Определяем вычисляемые функции
+            computed: {
+
+            },
+            methods: {
+
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #2 Task-6</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class=" cooking-status__container">
+            <form @submit.prevent>
+                <label>
+                    Новое заказанное блюдо <input v-model="newDish" type="text">
+                </label>
+                <button @click="sendDish" type="submit" class="">Отправить</button>
+            </form>
+            <div style="display: flex; padding-top: 30px;">
+                <div style="width: 300px; height: 300px; background: #e4d6d6;">
+                    <ul>
+                        <li v-for="(dish, index) in waitingList" :key="index">{{ dish }}
+                            <button type="submit" @click="makeItem(index)" class="button">готовить</button>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 300px; height: 300px; background: #b6a0a0;">
+                    <ul>
+                        <li v-for="(dish, index) in processingList" :key="index">{{ dish}}
+                            <button type="submit" @click="complitedItem(index)" class="button">готово</button>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 300px; height: 300px; background: #a78d8d;">
+                    <ul>
+                        <li v-for="(dish, index) in completedList" :key="index">{{ dish}}
+                            <button type="submit" @click="removeItem(index)" class="button">подать</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Массивы с состоянием готовности блюда
+
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+                return {
+                    newDish: '',
+                    makeProduct: null,
+                    waitingList: [],
+                    processingList: [],
+                    completedList: [],
+                }
+            },
+            // определение вычесляемых свойств
+            computed: {
+
+            },
+            // Определение методов
+            methods: {
+
+                sendDish() {
+                    this.waitingList.push(this.newDish)
+                    this.newDish = '';
+                },
+                makeItem(index) {
+                    const dish = this.waitingList.splice(index, 1)[0];
+                    this.processingList.push(dish);
+                },
+                complitedItem(index) {
+                    const dish = this.processingList.splice(index, 1)[0];
+                    this.completedList.push(dish);
+                },
+                removeItem(index) {
+                    this.completedList.splice(index, 1);
+                }
+
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

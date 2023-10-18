@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #2 Task-2</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="airplane__container" :class="containerClass">
+            <form class="airplane__form">
+                <!-- select для выбора класса полёта -->
+                <label class="airplane__choice-u-class">Выберите класс:</label>
+                <select class="airplane__class-select" v-model="airplaneClass" name="airplaneClass">
+                    <option class="airplane__class-selected" value="eco">Эконом</option>
+                    <option class="airplane__class-selected" value="business">Бизнес</option>
+                </select>
+
+                <!-- Если выбран эконом класс -->
+                <template v-if="isEco">
+                    <div class="airplane__choice-beer">
+                        <label class="airplane__choice-u-class">Выберите пиво:</label>
+                        <input class="airplane__radio" type="radio" name="beer" value="light" v-model="selectedBeer">
+                        <label class="airplane__label" for="LightBeer">Светлое</label>
+                        <input class="airplane__radio" type="radio" name="beer" value="dark" v-model="selectedBeer">
+                        <label class="airplane__label" for="DarkBeer">Тёмное</label>
+                    </div>
+                    <div class="airplane__choice-chips">
+                        <label class="airplane__choice-u-class">Выберите чипсы:</label>
+                        <input class="airplane__radio" type="radio" name="chips" value="crab"
+                            v-model="selectedEcoSnack">
+                        <label class="airplane__label" for="contactChoice1">С крабом</label>
+                        <input class="airplane__radio" type="radio" name="chips" value="cheese"
+                            v-model="selectedEcoSnack">
+                        <label class="airplane__label" for="contactChoice1">С сыром</label>
+                    </div>
+                    <!-- Сообщение выбора -->
+                    <p v-if="selectedBeer === 'light'" class="airplane__message">
+                        Выбрано светлое пиво и чипсы с {{ selectedEcoSnack === 'crab' ? 'крабом' : 'сыром' }}.
+                        Хорошего полёта!
+                    </p>
+                    <p v-else-if="selectedBeer === 'dark'" class="airplane__message">
+                        Выбрано тёмное пиво и чипсы с {{ selectedEcoSnack === 'crab' ? 'крабом' : 'сыром' }}.
+                        Хорошего полёта!
+                    </p>
+
+                </template>
+
+                <!-- Если выбран бизнес класс -->
+                <template v-if="isBusiness">
+                    <div>
+                        <input class="airplane__radio" type="radio" name="businessChoice" value="cognac"
+                            v-model="selectedBusinessItem">
+                        <label class="airplane__label" for="Cognac">Коньяк</label>
+
+                        <input class="airplane__radio" type="radio" name="businessChoice" value="newspaper"
+                            v-model="selectedBusinessItem">
+                        <label class="airplane__label" for="Newspaper">Газета</label>
+                        <p class="airplane__message" v-if="selectedBusinessItem === 'newspaper'">Выбрана газета.</p>
+                    </div>
+                </template>
+
+                <!-- Если выбран коньяк в бизнес классе -->
+                <template v-if="selectedBusinessItem === 'cognac' && this.airplaneClass === 'business'">
+                    <p class="airplane__message">Хотите закуску?</p>
+
+                    <input class="airplane__radio" type="radio" name="BusinessSnack" value="yes"
+                        v-model="BusinessSnackChoice" />
+                    <label class="airplane__label" for="yes">Да</label>
+
+                    <input class="airplane__radio" type="radio" name="BusinessSnack" value="no"
+                        v-model="BusinessSnackChoice" />
+                    <label class="airplane__label" for="no">Нет</label>
+
+                    <p class="airplane__message" v-if="BusinessSnackChoice === 'yes'">Приятного полета с закуской!</p>
+                    <p class="airplane__message" v-else-if="BusinessSnackChoice === 'no'">Приятного полета без закуски!
+                    </p>
+                </template>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data(app) {
+                return {
+                    airplaneClass: '',
+                    selectedBusinessItem: '',
+                    selectedBeer: '',
+                    selectedEcoSnack: '',
+                    BusinessSnackChoice: '',
+                }
+            },
+            // Определяем вычисляемые функции
+            methods: {
+
+                isEco() {
+                    event.preventDefault();
+                },
+                updateContainerClass() {
+                    if (this.airplaneClass === '') {
+                        return 'boarding';
+                    } else if (this.airplaneClass === 'eco') {
+                        return 'economy';
+                    } else if (this.airplaneClass === 'business') {
+                        return 'business';
+                    }
+                },
+                // selectedBusinessItem() {
+                //     if (this.selectedBusinessItem === 'newspaper') {
+
+                //     }
+                // }
+            },
+            computed: {
+                isEco() {
+                    return this.airplaneClass === 'eco'
+                },
+                isBusiness() {
+                    return this.airplaneClass === 'business'
+                },
+                containerClass() {
+                    return this.updateContainerClass();
+                },
+
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

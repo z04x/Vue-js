@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<FONTS>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--FONTS-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue.JS HomeWork #3 Task-3</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Задача 3. Елемент тренажера англійської. Виводимо зображення елемента і слово. Користувач вводить відповідь.
+        Якщо вірно – відтворюємо фразу «Добре. Молодець!» (і додаємо зелену рамку до елемента), якщо ні - то відтворюємо
+        фразу «Невірно, спробуйте ще раз» (і додаємо червону рамку). -->
+        <ol>
+            <li>яблоко</li>
+            <li>банан</li>
+            <li>арбуз</li>
+            <li>вишня</li>
+        </ol>
+        <div class="english-simulator__container">
+
+            <div :class="cardStatus" class="english-simulator__message">{{message}}</div>
+            <div v-if="showCard" :class='cardStatus' class="english-simulator__card">
+
+                <img :src="currentCard.image" alt="Word Image" class="english-simulator__card-image">
+
+                <span class="english-simulator__card-word">{{ currentCard.word }}</ы>
+                    <form>
+
+                        <input type="text" class="english-simulator__card-translation" placeholder="Ваш перевод"
+                            v-model="getTranslatedWord">
+
+                        <button class="english-simulator__card-button" @click="checkWordTranslation">Проверить</button>
+                    </form>
+            </div>
+
+            <button class="english-simulator__next-button" v-if="showNextButton" @click="generateNextCard">Следующая
+                карточка</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+            // Определяем данные приложения
+            data() {
+                return {
+                    // Массив карточек
+                    cards: [
+                        { image: 'https://st5.depositphotos.com/1020804/65694/i/450/depositphotos_656943808-stock-photo-ripe-perfect-red-apple-with.jpg', word: 'apple', translation: 'яблоко' },
+                        { image: 'https://img.freepik.com/free-vector/vector-ripe-yellow-banana-bunch-isolated-on-white-background_1284-45456.jpg', word: 'banana', translation: 'банан' },
+                        { image: 'https://maxi.today/api/imageResources/DELIVERY_IMAGE/0a355a78-681c-49cb-a9fe-24b966d20716.jpg', word: 'watermelon', translation: 'арбуз' },
+                        { image: 'https://i.pinimg.com/1200x/77/e0/a2/77e0a278b5ca06dc9e066e613417e550.jpg', word: 'cherry', translation: 'вишня' },
+
+                    ],
+                    message: '',
+                    getTranslatedWord: '',
+                    showCard: true,
+                    showNextButton: false,
+                    currentCardIndex: 0,
+                };
+            },
+            computed: {
+                currentCard() {
+                    return this.cards[this.currentCardIndex];
+
+                },
+
+            },
+            methods: {
+
+                checkWordTranslation() {
+                    event.preventDefault()
+                    // Проверяем ответ
+                    if (this.getTranslatedWord.toLowerCase() === this.currentCard.translation) { // Если вводимое слово (приведенное к нижнему регистру) совпадает с переводом
+                        this.message = 'Добре. Молодець!' // Выводим сообщение
+                        this.cardStatus = 'correct-translation' // Устанавливаем класс для сообщения и карточки
+                        this.showNextButton = true; // Выводим кнопку
+                    } else {
+                        this.message = 'Невірно, спробуйте ще раз' // Выводим сообщение
+                        this.cardStatus = 'mistranslation' // Устанавливаем класс для сообщения и карточки
+                        this.showNextButton = false; // Скрываем кнопку
+                    }
+                },
+
+                generateNextCard() {
+                    this.currentCardIndex++; // Счётчик индекса +1
+                    this.showNextButton = false; // Скрываем кнопку
+                    this.message = ''; // Сбрасываем сообщение
+                    this.getTranslatedWord = ''; // Сбрасываем поле ввода
+                    this.cardStatus = ''; // Сбрассываем класс для сообщения и карточки
+                    // Делаем цикличность карточек
+                    if (this.currentCardIndex >= this.cards.length) {
+                        this.currentCardIndex = 0;
+                    }
+                },
+            },
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    
+}
+.salary__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-items: center;
+    
+  }
+  
+  /* Секция для зарплаты сотрудников */
+  .salary__for-employee {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Заголовок */
+  .salary__for-employee h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Список с зарплатами сотрудников */
+  .salary__empolyee-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Отдельный элемент списка с зарплатой сотрудника */
+  .salary__empolyee {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    :nth-child(even){
+        color: rgb(15, 167, 15);
+        padding-left: 12px;
+    }
+  }
+  
+  .salary__empolyee span {
+    padding: 3px;
+  }
+  
+  /* Стили для сильного текста в заголовке */
+  .salary__for-employee strong {
+    color: #007bff;
+  }
+  
+  /* Псевдоэлементы для разделения элементов списка */
+  
+/* ul[class],
+ol[class] {
+  list-style: none;
+}
+
+h2{
+    font-weight: normal;
+    padding: 5px;
+    background: #ebe6e6;
+    text-decoration: underline green;
+}
+.salary__container {
+    max-width: 300px;
+    background: #e2d5d5;
+}
+
+.salary__for-employee {
+
+}
+
+.salary__empolyee-list {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    
+
+}
+
+.salary__empolyee {
+    display: flex;
+    border: 1px #ccc solid;  
+    background: #ddd9d9;
+    :nth-child(3){
+        padding-left: 13px;
+        color: green;
+    }
+} */

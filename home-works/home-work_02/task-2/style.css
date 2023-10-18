@@ -1,0 +1,84 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0; /* Белый или светло-серый фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Стили для контейнера формы */
+  .airplane__container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  }
+  
+  /* Стили для формы */
+  .airplane__form {
+    
+    background-color: #fff; /* Белый фон контейнера */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень карточки */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 20px;
+    max-width: 400px; /* Ширина карточки */
+    text-align: center; /* Выравнивание по центру */
+  }
+  
+  /* Стили для меток и инпутов */
+  .airplane__label {
+    color: #333; /* Цвет текста */
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Стили для кнопок и селектов */
+  .airplane__class-select,
+  .airplane__class-option,
+  .airplane__radio {
+    padding: 5px;
+    border: 1px solid #007bff; /* Синяя рамка */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #007bff; /* Цвет текста */
+    font-weight: 700;
+    font-size: 14px;
+  }
+  
+  .airplane__class-select {
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  /* Стили для сообщений */
+  .airplane__message {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff; /* Синий фон сообщений */
+    color: #fff; /* Белый текст сообщений */
+    border-radius: 5px;
+  }
+  
+  /* Стили для выбранного элемента в селекте */
+  .airplane__class-selected {
+    background-color: #007bff; /* Фон для выбранного элемента */
+    color: #fff; /* Цвет текста для выбранного элемента */
+  }
+
+
+
+  
+  .boarding{
+    background: url("https://images.herzindagi.info/image/2022/Dec/boarding-the-plane-first.jpg") 0 0/ cover no-repeat;
+  }
+  .economy{
+    background: url("https://burst.shopifycdn.com/photos/in-flight-over-mountains.jpg?width=1000&format=pjpg&exif=0&iptc=0") 0 0/ cover no-repeat;
+  }
+  .business{
+    background: url("https://trpstr.de/wp-content/uploads/2021/03/Singapore-Airlines-A350_Business-Class.jpg") 0 0/ cover no-repeat;
+  }
